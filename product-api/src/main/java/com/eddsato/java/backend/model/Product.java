@@ -64,4 +64,16 @@ public class Product {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    public static Product convert(ProductDTO productDTO) {
+        Product product = new Product();
+        product.setNome(productDTO.getNome());
+        product.setPreco(productDTO.getPreco());
+        product.setDescricao(productDTO.getDescircao());
+        product.setProductIdentifier(productDTO.getProductIdentifier());
+        if (productDTO.getCategory() != null) {
+            product.setCategory(Category.convert(productDTO.getCategory()));
+        }
+        return product;
+    }
 }
